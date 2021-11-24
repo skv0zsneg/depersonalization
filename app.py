@@ -4,10 +4,10 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route("/")
-@app.route("/before_depersonalization")
-def before_depersonalization():
-    return render_template('base.html')
+@app.route("/description")
+def description():
+    return render_template('index.html')
 
-@app.route("/identifiers")
-def identifiers():
-    return render_template('base.html')
+@app.route("/test-stand")
+def test_stand():
+    return render_template('test_stand.html')

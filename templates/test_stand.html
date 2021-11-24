@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Тестовый стенд проекта
+{% endblock %}
+
+{% block navigation %}
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="/description">Описание</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/test-stand">Тестовый стенд</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Критерии</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Оценка</a>
+  </li>
+{% endblock %}
+
+{% block body %}
+<h1>Тестовый стенд проекта.</h1>
+{% endblock %}
