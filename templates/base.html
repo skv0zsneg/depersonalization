@@ -13,13 +13,12 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="/">ОБЕЗЛИЧИВАНИЕ</a>
+          <a class="navbar-brand" href="/">Оценка Методов Обезличивания</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">  
-              <button class="btn btn-outline-success me-2" type="button">Начать тестирование</button>
-              {% block navigation %}{% endblock %}
+            <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Ссылки
@@ -32,6 +31,7 @@
         </div>
         </div>
       </nav>
+    </br>
     <div class="container">
         {% block body %}{% endblock %}
     </div>
