@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Управление тестовой СУБД.
+{% endblock %}
+
+
+{% block navigate %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Создание тестовой БД</li>
+        <li class="breadcrumb-item"><a href="#">Оценка метода введения идентификаторов</a></li>
+        <li class="breadcrumb-item"><a href="#">Оценка метода изменения состава или семантики</a></li>
+        <li class="breadcrumb-item"><a href="#">Оценка метода декомпозиции</a></li>
+        <li class="breadcrumb-item"><a href="#">Результаты</a></li>
+    </ol>
+</nav>
+{% endblock %}
+
+
+{% block body %}
+<h1>Создание тестовой БД.</h1>
+<p>На данной странице необходимо задать парамерты и создать тестовую БД для ее использования в оценке методов
+    обезличивания.</p>
+</br>
+
+<div class="row justify-content-start">
+    <div class="col-4">
+        <!-- Формы для создания тестовой БД.-->
+        <form class="row g-3">
+            <div class="col-md-4">
+                <label for="validationDefault01" class="form-label">Количество записей</label>
+                <input type="text" class="form-control" id="validationDefault01" value="1000" required>
+            </div>
+            <div class=col-4>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Default checkbox
+                    </label>
+                </div>
+            </div>
+            <div class=col-4>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Checked checkbox
+                    </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Отправить форму</button>
+            </div>
+        </form>
+        <!-- . -->
+    </div>
+    <div class="col-4">
+        <!-- Таблица тестовых БД. -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- . -->
+    </div>
+
+</div>
+{% endblock %}
