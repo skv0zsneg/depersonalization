@@ -2,7 +2,7 @@
 
 
 {% block title %}
-Управление тестовой СУБД.
+Создание тестовой БД
 {% endblock %}
 
 
@@ -20,74 +20,76 @@
 
 
 {% block body %}
-<h1>Создание тестовой БД.</h1>
+<h1>Создание тестовой БД</h1>
 <p>На данной странице необходимо задать парамерты и создать тестовую БД для ее использования в оценке методов
     обезличивания.</p>
 </br>
 
-<div class="row justify-content-start">
-    <div class="col-4">
-        <!-- Формы для создания тестовой БД.-->
-        <form class="row g-3">
-            <div class="col-md-4">
-                <label for="validationDefault01" class="form-label">Количество записей</label>
-                <input type="text" class="form-control" id="validationDefault01" value="1000" required>
-            </div>
-            <div class=col-4>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Default checkbox
-                    </label>
-                </div>
-            </div>
-            <div class=col-4>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                    <label class="form-check-label" for="flexCheckChecked">
-                        Checked checkbox
-                    </label>
-                </div>
-            </div>
-            <div class="col-12">
-                <button class="btn btn-primary" type="submit">Отправить форму</button>
-            </div>
-        </form>
-        <!-- . -->
+<form>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">Количество записей</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+        </div>
+        <div class="col-auto">
+            <span id="passwordHelpInline" class="form-text">
+                Количество записей не должно превышать 10.000
+            </span>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" type="submit">Создать тестовую БД</button>
+        </div>
     </div>
-    <div class="col-4">
-        <!-- Таблица тестовых БД. -->
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- . -->
-    </div>
-
-</div>
+</form>
+</br>
+<!-- Таблица тестовых БД. -->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Отчетсво</th>
+            <th scope="col">Институт</th>
+            <th scope="col">Группа</th>
+            <th scope="col">email</th>
+            <th scope="col">Телефон</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Иванов</td>
+            <td>Иван</td>
+            <td>Иванович</td>
+            <td>ИКБИСП</td>
+            <td>БИСО-02-16</td>
+            <td>some_email@index.com</td>
+            <td>+79999999999</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Иванов</td>
+            <td>Иван</td>
+            <td>Иванович</td>
+            <td>ИКБИСП</td>
+            <td>БИСО-02-16</td>
+            <td>some_email@index.com</td>
+            <td>+79999999999</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Иванов</td>
+            <td>Иван</td>
+            <td>Иванович</td>
+            <td>ИКБИСП</td>
+            <td>БИСО-02-16</td>
+            <td>some_email@index.com</td>
+            <td>+79999999999</td>
+        </tr>
+    </tbody>
+</table>
+<!-- . -->
 {% endblock %}
