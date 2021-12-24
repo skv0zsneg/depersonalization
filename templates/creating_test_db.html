@@ -2,17 +2,17 @@
 
 
 {% block title %}
-Создание тестовой БД
+Генерирование данных
 {% endblock %}
 
 
 {% block navigate %}
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Создание тестовой БД</li>
-        <li class="breadcrumb-item"><a href="#">Оценка метода введения идентификаторов</a></li>
-        <li class="breadcrumb-item"><a href="#">Оценка метода изменения состава или семантики</a></li>
-        <li class="breadcrumb-item"><a href="#">Оценка метода декомпозиции</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Генерирование данных</li>
+        <li class="breadcrumb-item"><a href="#">Метод введения идентификаторов</a></li>
+        <li class="breadcrumb-item"><a href="#">Метод изменения состава или семантики</a></li>
+        <li class="breadcrumb-item"><a href="#">Метода декомпозиции</a></li>
         <li class="breadcrumb-item"><a href="#">Результаты</a></li>
     </ol>
 </nav>
@@ -20,18 +20,18 @@
 
 
 {% block body %}
-<h1>Создание тестовой БД</h1>
-<p>На данной странице необходимо задать парамерты и создать тестовую БД для ее использования в оценке методов
-    обезличивания.</p>
+<h1>Генерирование данных</h1>
+<p>На данной странице необходимо сгенерировать тестовую таблицу с необезличенными данными. В дальнейшем эта таблица
+    будет использоваться для оценки методов обезличивания и деобезличивания.
+</p>
+<p>Для генерирования данных введите количество записей.</p>
 </br>
 
 <form>
     <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <label for="inputPassword6" class="col-form-label">Количество записей</label>
-        </div>
-        <div class="col-auto">
-            <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+        <div class="form-floating col-auto">
+            <input type="number" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Количество записей</label>
         </div>
         <div class="col-auto">
             <span id="passwordHelpInline" class="form-text">
@@ -45,51 +45,54 @@
 </form>
 </br>
 <!-- Таблица тестовых БД. -->
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">Фамилия</th>
-            <th scope="col">Имя</th>
-            <th scope="col">Отчетсво</th>
-            <th scope="col">Институт</th>
-            <th scope="col">Группа</th>
-            <th scope="col">email</th>
-            <th scope="col">Телефон</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Иванов</td>
-            <td>Иван</td>
-            <td>Иванович</td>
-            <td>ИКБИСП</td>
-            <td>БИСО-02-16</td>
-            <td>some_email@index.com</td>
-            <td>+79999999999</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Иванов</td>
-            <td>Иван</td>
-            <td>Иванович</td>
-            <td>ИКБИСП</td>
-            <td>БИСО-02-16</td>
-            <td>some_email@index.com</td>
-            <td>+79999999999</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Иванов</td>
-            <td>Иван</td>
-            <td>Иванович</td>
-            <td>ИКБИСП</td>
-            <td>БИСО-02-16</td>
-            <td>some_email@index.com</td>
-            <td>+79999999999</td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered caption-top">
+        <caption>Таблица необезличенных данных</caption>
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Отчетсво</th>
+                <th scope="col">Институт</th>
+                <th scope="col">Группа</th>
+                <th scope="col">email</th>
+                <th scope="col">Телефон</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Иванов</td>
+                <td>Иван</td>
+                <td>Иванович</td>
+                <td>ИКБИСП</td>
+                <td>БИСО-02-16</td>
+                <td>some_email@index.com</td>
+                <td>+79999999999</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Иванов</td>
+                <td>Иван</td>
+                <td>Иванович</td>
+                <td>ИКБИСП</td>
+                <td>БИСО-02-16</td>
+                <td>some_email@index.com</td>
+                <td>+79999999999</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Иванов</td>
+                <td>Иван</td>
+                <td>Иванович</td>
+                <td>ИКБИСП</td>
+                <td>БИСО-02-16</td>
+                <td>some_email@index.com</td>
+                <td>+79999999999</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <!-- . -->
 {% endblock %}
