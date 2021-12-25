@@ -14,18 +14,19 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 16px;">
     <div class="container">
       <a class="navbar-brand" href="/">DP Quiz</a>
     </div>
   </nav>
-  </br>
   <div class="container">
     {% block navigate %}{% endblock %}
   </div>
   <hr>
-  </br>
   <div class="container">
+    <div class="d-flex justify-content-end">
+      {% block btns %}{% endblock %}
+    </div>
     {% block body %}{% endblock %}
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

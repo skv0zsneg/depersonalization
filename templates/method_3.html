@@ -2,17 +2,17 @@
 
 
 {% block title %}
-Генерирование данных
+Метод перемешивания
 {% endblock %}
 
 
 {% block navigate %}
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Генерирование данных</li>
+        <li class="breadcrumb-item"><a href="/">Генерирование данных</a></li>
         <li class="breadcrumb-item"><a href="/method-1">Метод введения идентификаторов</a></li>
         <li class="breadcrumb-item"><a href="/method-2">Метод перемешивания</a></li>
-        <li class="breadcrumb-item"><a href="/method-3">Метод декомпозиции</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Метод декомпозиции</li>
         <li class="breadcrumb-item"><a href="/summary">Результаты</a></li>
     </ol>
 </nav>
@@ -20,36 +20,40 @@
 
 
 {% block btns %}
-<a class="btn btn-outline-secondary disabled" style="margin-right: 10px;">Назад</a>
-<a class="btn btn-success" href="/method-1">Далее</a>
+<a class="btn btn-outline-secondary" href="/method-2" style="margin-right: 10px;">Назад</a>
+<a class="btn btn-success" href="/summary">Далее</a>
 {% endblock %}
 
 
 {% block body %}
-<h1>Генерирование данных</h1>
-<p class="bg-light rounded py-2 px-2">На данной странице необходимо сгенерировать тестовую таблицу с необезличенными
-    данными. В дальнейшем эта таблица
-    будет использоваться для оценки методов обезличивания и деобезличивания. Для генерирования данных введите количество
-    записей.</p>
+<h1>Метод декомпозиции</h1>
+<p class="bg-light rounded py-2 px-2">На данной странице выполнятеся процедура обезличивания и деобезлчивания методом декомпозиции. Во время
+    выполнения процедуры собираются некоторые данные, которые будут использоваться для оценивания этого метода в
+    дальнейшем.
+</p>
 </br>
 
 <form>
     <div class="row">
-        <div class="col-4 mb-3">
-            <label for="exampleInputEmail1" class="form-label">Количество персон</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">Количество персон не должно превышать 10.000</div>
+        <div class="col-4 mx-auto my-auto">
+            <button class="btn btn-outline-primary py-4" type="submit">Запуск процедуры обезличивания и
+                деобезличивания</button>
         </div>
-        <div class="col-8 my-auto">
-            <button type="button" class="btn btn-outline-primary py-4">Сгенерировать тестовую таблицу ПДн</button>
+        <div class="col-4">
+            <p>Затраченное время (в секундах) на Обезличивание:</p>
+            <h1 class="display-6">660</h1>
+        </div>
+        <div class="col-4">
+            <p>Затраченное время (в секундах) на Деобезличивание:</p>
+            <h1 class="display-6">4500</h1>
         </div>
     </div>
 </form>
 </br>
-<!-- Таблица тестовых БД. -->
+<!-- Обезличенная таблица. -->
 <div class="table-responsive">
     <table class="table table-bordered caption-top">
-        <caption>Таблица необезличенных данных</caption>
+        <caption>Обезличенная таблица данных</caption>
         <thead class="table-dark">
             <tr>
                 <th scope="col">id</th>
@@ -97,4 +101,5 @@
     </table>
 </div>
 <!-- . -->
+
 {% endblock %}

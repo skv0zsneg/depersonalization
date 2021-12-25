@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Метод введения идентификаторов
+{% endblock %}
+
+
+{% block navigate %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Генерирование данных</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Метод введения идентификаторов</li>
+        <li class="breadcrumb-item"><a href="/method-2">Метод перемешивания</a></li>
+        <li class="breadcrumb-item"><a href="/method-3">Метод декомпозиции</a></li>
+        <li class="breadcrumb-item"><a href="/summary">Результаты</a></li>
+    </ol>
+</nav>
+{% endblock %}
+
+
+{% block btns %}
+<a class="btn btn-outline-secondary" href="/" style="margin-right: 10px;">Назад</a>
+<a class="btn btn-success" href="/method-2">Далее</a>
+{% endblock %}
+
+
+{% block body %}
+<h1>Метод введения идентификаторов</h1>
+<p class="bg-light rounded py-2 px-2">На данной странице выполнятеся процедура обезличивания и деобезлчивания методом введения идентификаторов. Во время
+    выполнения процедуры собираются некоторые данные, которые будут использоваться для оценивания этого метода в
+    дальнейшем.
+</p>
+</br>
+
+<form>
+    <div class="row">
+        <div class="col-4 mx-auto my-auto">
+            <button class="btn btn-outline-primary py-4" type="submit">Запуск процедуры обезличивания и
+                деобезличивания</button>
+        </div>
+        <div class="col-4">
+            <p>Затраченное время (в секундах) на Обезличивание:</p>
+            <h1 class="display-6">1234</h1>
+        </div>
+        <div class="col-4">
+            <p>Затраченное время (в секундах) на Деобезличивание:</p>
+            <h1 class="display-6">2345</h1>
+        </div>
+    </div>
+</form>
+</br>
+<div class="row">
+    <!-- Таблица идентификаторов БД. -->
+    <div class="table-responsive col-4" style="overflow: scroll;">
+        <table class="table table-bordered caption-top">
+            <caption>Таблица идентификаторов</caption>
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Отчетсво</th>
+                    <th scope="col">Институт</th>
+                    <th scope="col">Группа</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Телефон</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Иванов</td>
+                    <td>Иван</td>
+                    <td>Иванович</td>
+                    <td>ИКБИСП</td>
+                    <td>БИСО-02-16</td>
+                    <td>some_email@index.com</td>
+                    <td>+79999999999</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Иванов</td>
+                    <td>Иван</td>
+                    <td>Иванович</td>
+                    <td>ИКБИСП</td>
+                    <td>БИСО-02-16</td>
+                    <td>some_email@index.com</td>
+                    <td>+79999999999</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Иванов</td>
+                    <td>Иван</td>
+                    <td>Иванович</td>
+                    <td>ИКБИСП</td>
+                    <td>БИСО-02-16</td>
+                    <td>some_email@index.com</td>
+                    <td>+79999999999</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- . -->
+    <!-- Обезличенная таблица. -->
+    <div class="table-responsive col-8">
+        <table class="table table-bordered caption-top">
+            <caption>Обезличенная таблица данных</caption>
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Отчетсво</th>
+                    <th scope="col">Институт</th>
+                    <th scope="col">Группа</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Телефон</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Иванов</td>
+                    <td>Иван</td>
+                    <td>Иванович</td>
+                    <td>ИКБИСП</td>
+                    <td>БИСО-02-16</td>
+                    <td>some_email@index.com</td>
+                    <td>+79999999999</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Иванов</td>
+                    <td>Иван</td>
+                    <td>Иванович</td>
+                    <td>ИКБИСП</td>
+                    <td>БИСО-02-16</td>
+                    <td>some_email@index.com</td>
+                    <td>+79999999999</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Иванов</td>
+                    <td>Иван</td>
+                    <td>Иванович</td>
+                    <td>ИКБИСП</td>
+                    <td>БИСО-02-16</td>
+                    <td>some_email@index.com</td>
+                    <td>+79999999999</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- . -->
+</div>
+{% endblock %}

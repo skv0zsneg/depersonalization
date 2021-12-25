@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Результаты
+{% endblock %}
+
+
+{% block navigate %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Генерирование данных</a></li>
+        <li class="breadcrumb-item"><a href="/method-1">Метод введения идентификаторов</a></li>
+        <li class="breadcrumb-item"><a href="/method-2">Метод перемешивания</a></li>
+        <li class="breadcrumb-item"><a href="/method-3">Метод декомпозиции</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Результаты</li>
+    </ol>
+</nav>
+{% endblock %}
+
+
+{% block btns %}
+<a class="btn btn-outline-secondary" href="/method-3" style="margin-right: 10px;">Назад</a>
+<a class="btn btn-success disabled"">Далее</a>
+{% endblock %}
+
+
+{% block body %}
+<h1>Результаты</h1>
+<p class=" bg-light rounded py-2 px-2">На данной странице приводится сводка собранных данных по каждому из методов
+    обезличивания и деобезличивания. Также, проводится оценка каждого метода критериями.</p>
+    </br>
+    <!-- Идетификаторов -->
+    <div class="row">
+        <div class="col my-2 mx-2">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h4 class="card-title pb-1">Метод введения идентификаторов</h4>
+                    <h6 class="card-subtitle text-muted pb-3">Собранные данные и результаты оценивания</h6>
+                    
+                    <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на обезличивание:</p>
+                    <h1 class="display-6 pb-2">8787 c</h1>
+
+                    <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на деобезличивание:</p>
+                    <h1 class="display-6 pb-3">8787 c</h1>
+
+                    <h5 class="card-title pb-1">Исходя из полученных выше данных, получим</h5>
+
+                    <p class="card-text pb-2 mb-0">Критерий скорости обезличивания:</p>
+                    <h1 class="display-5 text-success pb-2">45.123 Гб/с</h1>
+
+                    <p class="card-text pb-2 mb-0">Критерий скорости деобезличивания:</p>
+                    <h1 class="display-5 text-success">45.123 Гб/с</h1>
+                </div>
+            </div>
+        </div>
+        <!-- . -->
+        <!-- перемешивания -->
+        <div class="col my-2 mx-2">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h4 class="card-title pb-1">Метод перемешивания</h4>
+                    <h6 class="card-subtitle text-muted pb-3">Собранные данные и результаты оценивания</h6>
+
+                    <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на обезличивание:</p>
+                    <h1 class="display-6 pb-2">8787 c</h1>
+
+                    <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на деобезличивание:</p>
+                    <h1 class="display-6 pb-3">8787 c</h1>
+
+                    <h5 class="card-title pb-1">Исходя из полученных выше данных, получим</h5>
+
+                    <p class="card-text pb-2 mb-0">Критерий скорости обезличивания:</p>
+                    <h1 class="display-5 text-success pb-2">45.123 Гб/с</h1>
+
+                    <p class="card-text pb-2 mb-0">Критерий скорости деобезличивания:</p>
+                    <h1 class="display-5 text-success">45.123 Гб/с</h1>
+                </div>
+            </div>
+        </div>
+        <!-- декомпозиции -->
+        <div class="col my-2 mx-2">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h4 class="card-title pb-1">Метод декомпозиции</h4>
+                    <h6 class="card-subtitle text-muted pb-3">Собранные данные и результаты оценивания</h6>
+
+                    <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на обезличивание:</p>
+                    <h1 class="display-6 pb-2">8787 c</h1>
+
+                    <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на деобезличивание:</p>
+                    <h1 class="display-6 pb-3">8787 c</h1>
+
+                    <h5 class="card-title pb-1">Исходя из полученных выше данных, получим</h5>
+
+                    <p class="card-text pb-2 mb-0">Критерий скорости обезличивания:</p>
+                    <h1 class="display-5 text-success pb-2">45.123 Гб/с</h1>
+
+                    <p class="card-text pb-2 mb-0">Критерий скорости деобезличивания:</p>
+                    <h1 class="display-5 text-success">45.123 Гб/с</h1>
+                </div>
+            </div>
+        </div>
+        <!-- . -->
+    </div>
+    <!-- . -->
+    {% endblock %}

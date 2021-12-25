@@ -10,19 +10,19 @@ def testing_methods():
     return render_template('creating_test_db.html')
 
 
-@app.route("/1-method")
+@app.route("/method-1")
 def method_1():
-    return render_template('fst_dp_method.html')
+    return render_template('method_1.html')
 
 
-@app.route("/2-method")
+@app.route("/method-2")
 def method_2():
-    return render_template('scd_dp_method.html')
+    return render_template('method_2.html')
 
 
-@app.route("/3-method")
+@app.route("/method-3")
 def method_3():
-    return render_template('thrd_dp_method.html')
+    return render_template('method_3.html')
 
 
 @app.route("/summary")
