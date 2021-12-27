@@ -33,15 +33,15 @@
     записей.</p>
 </br>
 
-<form>
+<form method="post">
     <div class="row">
         <div class="col-4 mb-3">
-            <label for="exampleInputEmail1" class="form-label">Количество персон</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">Количество персон не должно превышать 10.000</div>
+            <label for="personCount" class="form-label">Количество персон</label>
+            <input type="number" class="form-control" id="personCount">
+            <div id="personCountHelp" class="form-text">Количество персон не должно превышать 10.000</div>
         </div>
         <div class="col-8 my-auto">
-            <button type="button" class="btn btn-outline-primary py-4">Сгенерировать тестовую таблицу ПДн</button>
+            <button type="submit" class="btn btn-outline-primary py-4">Сгенерировать тестовую таблицу ПДн</button>
         </div>
     </div>
 </form>

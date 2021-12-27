@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 flask = "*"
+starlette = "*"
+databases = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 
