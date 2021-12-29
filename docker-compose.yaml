@@ -1,12 +1,17 @@
-version: '3'
+version: '3.1'
+
+volumes:
+  pg_project:
+
 services:
-  db:
-    image: postgres:11
-    ports:
-      - 32700:5432
-    volumes:
-      - ./data:/var/lib/postgresql/data
+  pg_db:
+    image: postgres
+    restart: always
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: main_db
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=main_db
+    volumes:
+      - pg_project:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432

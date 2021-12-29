@@ -9,4 +9,5 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-from app import routes, models, repositories, utils
+from app import routes, repositories, utils
+from app.models import main, ex_identifiers
