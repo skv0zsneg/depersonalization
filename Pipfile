@@ -4,10 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-starlette = "*"
-databases = "*"
-sqlalchemy = "*"
+Flask = "*"
+SQLAlchemy = "*"
+Flask-SQLAlchemy = "*"
+psycopg2 = "*"
+mimesis = "*"
 
 [dev-packages]
 

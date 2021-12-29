@@ -6,7 +6,8 @@
 ___
 ### Запуск
 ```bash
-flask run
+sudo docker-compose -f docker-compose.yaml up
+python3 run.py
 ```
 ___
 ### Использованные технологии:
