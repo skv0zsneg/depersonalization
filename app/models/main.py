@@ -24,13 +24,6 @@ class TestData(db.Model):
         super(TestData, self).__init__(**kwargs)
 
 
-class Method(db.Model):
-    """Модель, содержащая названия используемых
-    в приложении методов обезличивания."""
-    id = db.Column(db.Integer, primary_key=True)
-    method_name = db.Column(db.String(128), nullable=False)
-
-
 class CalculateData(db.Model):
     """Модель, содержащая данные для будующих
     раcсчетов эффективности методов обезличивания и
@@ -38,11 +31,10 @@ class CalculateData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time_to_ob = db.Column(db.String(256), nullable=False)
     time_to_deob = db.Column(db.String(256), nullable=False)
-
-    method_id = db.Column(db.Integer, db.ForeignKey(
-        'method.id'), nullable=False)
-    method = db.relationship(
-        'Method', backref=db.backref('calculate_datas', lazy=True))
+    method_name = db.Column(db.String(256), nullable=False)
+    
+    def __init__(self, **kwargs):
+        super(TestData, self).__init__(**kwargs)
 
 
 db.create_all()

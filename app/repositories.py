@@ -5,7 +5,7 @@ from mimesis.locales import Locale
 from mimesis.builtins import RussiaSpecProvider
 from random import choice
 from typing import Optional
-from app.models import TestData
+from app.models.main import TestData
 from app import utils
 
 
@@ -19,7 +19,9 @@ def generate_random_persons(db: SQLAlchemy, person_count: str) -> None:
         db.session.add(TestData(
             name=person.name(),
             surname=person.surname(),
-            middle_name=rus_provider.patronymic(utils.get_mimesis_enum_gender(person.gender())),
+            middle_name=rus_provider.patronymic(
+                utils.get_mimesis_enum_gender(person.gender())
+            ),
             birth_place=address.address(),
             address=address.address(),
             email=person.email(),

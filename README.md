@@ -6,7 +6,7 @@
 ___
 ### Запуск
 ```bash
-sudo docker-compose -f docker-compose.yaml up
+sudo docker-compose -f docker-compose.yaml up --remove-orphans
 python3 run.py
 ```
 ___
