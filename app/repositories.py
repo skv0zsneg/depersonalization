@@ -5,7 +5,7 @@ from mimesis.locales import Locale
 from mimesis.builtins import RussiaSpecProvider
 from random import choice
 from typing import Optional
-from app.models.main import TestData
+from app.models.experiment import TestData
 from app import utils
 
 

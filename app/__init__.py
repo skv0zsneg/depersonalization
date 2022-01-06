@@ -10,4 +10,4 @@ db = SQLAlchemy(app)
 
 
 from app import routes, repositories, utils
-from app.models import main, ex_identifiers
+from app.models import experiment, identifier, decomposition, shuffle

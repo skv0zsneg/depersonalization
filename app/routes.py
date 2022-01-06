@@ -2,8 +2,7 @@ from time import perf_counter
 from flask import render_template, request, redirect, url_for
 from app import app, db
 from app.repositories import generate_random_persons
-from app.models.main import TestData, CalculateData
-from app.models.ex_identifiers import ExDepersonalizeTestDataMethodIdentifiers, ExIdentifier
+from app.models.experiment import TestData, ExperimentalData
 
 
 # -- pages ---
@@ -36,75 +35,23 @@ def summary():
 # -- actions ---
 @app.route("/generate-persons", methods=['POST'])
 def generate_persons():
-    TestData.query.delete()
-    db.session.commit()
-    person_count = request.form['personCount']
-    generate_random_persons(db, person_count)
-
+    # ...
     return redirect(url_for("testing_methods"))
 
 
 @app.route("/run-method-1", methods=['GET'])
 def run_method_1():
-    ExDepersonalizeTestDataMethodIdentifiers.query.delete()
-    ExIdentifier.query.delete()
-    db.session.commit()
-
-    t_start = perf_counter()
-    # Обезличивание
-    time_to_ob = perf_counter() - t_start
-
-    t_start = perf_counter()
-    # ДеОбезличивание
-    time_to_deob = perf_counter() - t_start
-
-    db.session.add(CalculateData(
-        time_to_ob=time_to_ob,
-        time_to_deob=time_to_deob,
-        method_name="Метод введения идентификаторов."
-    ))
+    # ...
     db.session.commit()
 
 
 @app.route("/run-method-2", methods=['GET'])
 def run_method_2():
-    # ExDepersonalizeTestDataMethodIdentifiers.query.delete()
-    # ExIdentifier.query.delete()
-    # db.session.commit()
-
-    t_start = perf_counter()
-    # Обезличивание
-    time_to_ob = perf_counter() - t_start
-
-    t_start = perf_counter()
-    # ДеОбезличивание
-    time_to_deob = perf_counter() - t_start
-
-    db.session.add(CalculateData(
-        time_to_ob=time_to_ob,
-        time_to_deob=time_to_deob,
-        method_name="Метод перемешивания."
-    ))
+    # ...
     db.session.commit()
 
 
 @app.route("/run-method-3", methods=['GET'])
 def run_method_3():
-    # ExDepersonalizeTestDataMethodIdentifiers.query.delete()
-    # ExIdentifier.query.delete()
-    # db.session.commit()
-
-    t_start = perf_counter()
-    # Обезличивание
-    time_to_ob = perf_counter() - t_start
-
-    t_start = perf_counter()
-    # ДеОбезличивание
-    time_to_deob = perf_counter() - t_start
-
-    db.session.add(CalculateData(
-        time_to_ob=time_to_ob,
-        time_to_deob=time_to_deob,
-        method_name="Метод декомпозиции."
-    ))
+    # ...
     db.session.commit()
