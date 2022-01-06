@@ -53,18 +53,19 @@
         <caption>Таблица необезличенных данных</caption>
         <thead class="table-dark">
             <tr>
-                <th scope="col">Имя</th>
-                <th scope="col">Фамилия</th>
-                <th scope="col">Отчество</th>
+                <th scope="col">ФИО</th>
+                <th scope="col">Дата рождения</th>
                 <th scope="col">Место рождения</th>
-                <th scope="col">Адрес</th>
+                <th scope="col">Почтовый адрес</th>
                 <th scope="col">Электронная почта</th>
                 <th scope="col">Серия паспорта</th>
                 <th scope="col">Номер паспорта</th>
                 <th scope="col">ИНН</th>
                 <th scope="col">СНИЛС</th>
                 <th scope="col">Номер телефона</th>
+                <th scope="col">Данные о военной службе</th>
                 <th scope="col">Семейное положение</th>
+                <th scope="col">Расчетный счет</th>
                 <th scope="col">Номер группы</th>
                 <th scope="col">Название института</th>
             </tr>
@@ -72,18 +73,19 @@
         <tbody>
             {% for test_data in test_datas %}
             <tr>
-                <td>{{ test_data.name }}</td>
-                <td>{{ test_data.surname }}</td>
-                <td>{{ test_data.middle_name }}</td>
+                <td>{{ test_data.fio }}</td>
+                <td>{{ test_data.birth_date }}</td>
                 <td>{{ test_data.birth_place }}</td>
-                <td>{{ test_data.address }}</td>
+                <td>{{ test_data.post_address }}</td>
                 <td>{{ test_data.email }}</td>
-                <td>{{ test_data.doc_serial }}</td>
-                <td>{{ test_data.doc_number }}</td>
+                <td>{{ test_data.passport_serial }}</td>
+                <td>{{ test_data.passport_number }}</td>
                 <td>{{ test_data.inn }}</td>
                 <td>{{ test_data.snils }}</td>
-                <td>{{ test_data.phone_number }}</td>
+                <td>{{ test_data.telephone }}</td>
+                <td>{{ test_data.military_data }}</td>
                 <td>{{ test_data.family_status }}</td>
+                <td>{{ test_data.payment_account }}</td>
                 <td>{{ test_data.group_number }}</td>
                 <td>{{ test_data.institute_name }}</td>
             </tr>

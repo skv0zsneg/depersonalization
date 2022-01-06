@@ -41,65 +41,148 @@
         </div>
         <div class="col-4">
             <p>Затраченное время (в секундах) на Обезличивание:</p>
-            <h1 class="display-6">660</h1>
+            <h1 class="display-6">{{ experimental_data.time_to_depersonalization }}</h1>
         </div>
         <div class="col-4">
             <p>Затраченное время (в секундах) на Деобезличивание:</p>
-            <h1 class="display-6">4500</h1>
+            <h1 class="display-6">{{ experimental_data.time_to_undepersonalization }}</h1>
         </div>
     </div>
 </form>
 </br>
-<!-- Обезличенная таблица. -->
-<div class="table-responsive">
-    <table class="table table-bordered caption-top">
-        <caption>Обезличенная таблица данных</caption>
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Фамилия</th>
-                <th scope="col">Имя</th>
-                <th scope="col">Отчетсво</th>
-                <th scope="col">Институт</th>
-                <th scope="col">Группа</th>
-                <th scope="col">email</th>
-                <th scope="col">Телефон</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Иванов</td>
-                <td>Иван</td>
-                <td>Иванович</td>
-                <td>ИКБИСП</td>
-                <td>БИСО-02-16</td>
-                <td>some_email@index.com</td>
-                <td>+79999999999</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Иванов</td>
-                <td>Иван</td>
-                <td>Иванович</td>
-                <td>ИКБИСП</td>
-                <td>БИСО-02-16</td>
-                <td>some_email@index.com</td>
-                <td>+79999999999</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Иванов</td>
-                <td>Иван</td>
-                <td>Иванович</td>
-                <td>ИКБИСП</td>
-                <td>БИСО-02-16</td>
-                <td>some_email@index.com</td>
-                <td>+79999999999</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row">
+    <!-- Таблица идентификаторов БД. -->
+    <div class="table-responsive col-5">
+        <table class="table table-bordered caption-top">
+            <caption>Первая обезличенная таблица</caption>
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Данные о военной службе</th>
+                    <th scope="col">Семейное положение</th>
+                    <th scope="col">Название института</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in depersonalize_data %}
+                <tr>
+                    <td>{{ data.military_data }}</td>
+                    <td>{{ data.family_status }}</td>
+                    <td>{{ data.study_institute }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- . -->
+    <!-- Обезличенная таблица. -->
+    <div class="table-responsive col-5">
+        <table class="table table-bordered caption-top">
+            <caption>Первая обезличенная таблица</caption>
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ФИО</th>
+                    <th scope="col">Дата рождения</th>
+                    <th scope="col">Место рождения</th>
+                    <th scope="col">Почтовый адрес</th>
+                    <th scope="col">Электронная почта</th>
+                    <th scope="col">Серия паспорта</th>
+                    <th scope="col">Номер паспорта</th>
+                    <th scope="col">ИНН</th>
+                    <th scope="col">СНИЛС</th>
+                    <th scope="col">Номер телефона</th>
+                    <th scope="col">Расчетный счет</th>
+                    <th scope="col">Номер группы</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in conformity_table %}
+                <tr>
+                    <td>{{ data.id }}</td>
+                    <td>{{ test_data.fio }}</td>
+                    <td>{{ test_data.birth_date }}</td>
+                    <td>{{ test_data.birth_place }}</td>
+                    <td>{{ test_data.post_address }}</td>
+                    <td>{{ test_data.email }}</td>
+                    <td>{{ test_data.passport_serial }}</td>
+                    <td>{{ test_data.passport_number }}</td>
+                    <td>{{ test_data.inn }}</td>
+                    <td>{{ test_data.snils }}</td>
+                    <td>{{ test_data.telephone }}</td>
+                    <td>{{ test_data.payment_account }}</td>
+                    <td>{{ test_data.group_number }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- . -->
+    <div class="table-responsive col-2">
+        <table class="table table-bordered caption-top">
+            <caption>Таблица связей</caption>
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Навзвание таблицы</th>
+                    <th scope="col">Номер таблицы</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in depersonalize_data %}
+                <tr>
+                    <td>{{ data.table_name }}</td>
+                    <td>{{ data.table_serial_number }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
-<!-- . -->
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-bordered caption-top">
+            <caption>Деобезличенные данные</caption>
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ФИО</th>
+                    <th scope="col">Дата рождения</th>
+                    <th scope="col">Место рождения</th>
+                    <th scope="col">Почтовый адрес</th>
+                    <th scope="col">Электронная почта</th>
+                    <th scope="col">Серия паспорта</th>
+                    <th scope="col">Номер паспорта</th>
+                    <th scope="col">ИНН</th>
+                    <th scope="col">СНИЛС</th>
+                    <th scope="col">Номер телефона</th>
+                    <th scope="col">Данные о военной службе</th>
+                    <th scope="col">Семейное положение</th>
+                    <th scope="col">Расчетный счет</th>
+                    <th scope="col">Номер группы</th>
+                    <th scope="col">Название института</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in undepersonalize_data %}
+                <tr>
+                    <td>{{ data.fio }}</td>
+                    <td>{{ data.birth_date }}</td>
+                    <td>{{ data.birth_place }}</td>
+                    <td>{{ data.post_address }}</td>
+                    <td>{{ data.email }}</td>
+                    <td>{{ data.passport_serial }}</td>
+                    <td>{{ data.passport_number }}</td>
+                    <td>{{ data.inn }}</td>
+                    <td>{{ data.snils }}</td>
+                    <td>{{ data.telephone }}</td>
+                    <td>{{ data.military_data }}</td>
+                    <td>{{ data.family_status }}</td>
+                    <td>{{ data.payment_account }}</td>
+                    <td>{{ data.group_number }}</td>
+                    <td>{{ data.institute_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
 
 {% endblock %}

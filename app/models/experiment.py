@@ -28,9 +28,23 @@ class ExperimentalData(db.Model):
     method_name = db.Column(db.String(256), nullable=False)
     time_to_depersonalization = db.Column(db.String(256), nullable=False)
     time_to_undepersonalization = db.Column(db.String(256), nullable=False)
-    
+
     def __init__(self, **kwargs):
         super(ExperimentalData, self).__init__(**kwargs)
 
 
 db.create_all()
+
+for method_name in ['identifier', 'shuffle', 'decomposition']:
+    db.session.add(
+        ExperimentalData(
+            method_name=method_name,
+            time_to_depersonalization='0',
+            time_to_undepersonalization='0'
+        )
+    )
+    try:
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        db.session.rollback()

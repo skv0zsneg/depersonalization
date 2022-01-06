@@ -14,26 +14,28 @@ def generate_random_persons(db: SQLAlchemy, person_count: str) -> None:
     for _ in range(int(person_count)):
         person = Person(Locale.RU)
         rus_provider = RussiaSpecProvider()
-        address = Address('ru')
+        address = Address("ru")
 
-        db.session.add(TestData(
-            name=person.name(),
-            surname=person.surname(),
-            middle_name=rus_provider.patronymic(
-                utils.get_mimesis_enum_gender(person.gender())
-            ),
-            birth_place=address.address(),
-            address=address.address(),
-            email=person.email(),
-            doc_serial=rus_provider.passport_series(),
-            doc_number=rus_provider.passport_number(),
-            inn=rus_provider.inn(),
-            snils=rus_provider.snils(),
-            phone_number=person.telephone(),
-            family_status=choice(['Не состоит в браке', 'Состоит в браке']),
-            group_number=utils.generate_random_group(),
-            institute_name=utils.generate_random_institute_name()
-        ))
+        db.session.add(
+            TestData(
+                name=person.name(),
+                surname=person.surname(),
+                middle_name=rus_provider.patronymic(
+                    utils.get_mimesis_enum_gender(person.gender())
+                ),
+                birth_place=address.address(),
+                address=address.address(),
+                email=person.email(),
+                doc_serial=rus_provider.passport_series(),
+                doc_number=rus_provider.passport_number(),
+                inn=rus_provider.inn(),
+                snils=rus_provider.snils(),
+                phone_number=person.telephone(),
+                family_status=choice(["Не состоит в браке", "Состоит в браке"]),
+                group_number=utils.generate_random_group(),
+                institute_name=utils.generate_random_institute_name(),
+            )
+        )
 
         del person, rus_provider, address
 
