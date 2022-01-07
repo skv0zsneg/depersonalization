@@ -2,7 +2,7 @@
 
 
 {% block title %}
-Метод перемешивания
+Метод декомпозиции
 {% endblock %}
 
 
@@ -57,14 +57,16 @@
             <caption>Первая обезличенная таблица</caption>
             <thead class="table-dark">
                 <tr>
+                    <th scope="col">Идентификатор</th>
                     <th scope="col">Данные о военной службе</th>
                     <th scope="col">Семейное положение</th>
                     <th scope="col">Название института</th>
                 </tr>
             </thead>
             <tbody>
-                {% for data in depersonalize_data %}
+                {% for data in first_table %}
                 <tr>
+                    <td>{{ data.id }}</td>
                     <td>{{ data.military_data }}</td>
                     <td>{{ data.family_status }}</td>
                     <td>{{ data.study_institute }}</td>
@@ -77,9 +79,10 @@
     <!-- Обезличенная таблица. -->
     <div class="table-responsive col-5">
         <table class="table table-bordered caption-top">
-            <caption>Первая обезличенная таблица</caption>
+            <caption>Вторая обезличенная таблица</caption>
             <thead class="table-dark">
                 <tr>
+                    <th scope="col">Идентификатор</th>
                     <th scope="col">ФИО</th>
                     <th scope="col">Дата рождения</th>
                     <th scope="col">Место рождения</th>
@@ -95,7 +98,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for data in conformity_table %}
+                {% for data in second_table %}
                 <tr>
                     <td>{{ data.id }}</td>
                     <td>{{ test_data.fio }}</td>
@@ -121,15 +124,15 @@
             <caption>Таблица связей</caption>
             <thead class="table-dark">
                 <tr>
-                    <th scope="col">Навзвание таблицы</th>
-                    <th scope="col">Номер таблицы</th>
+                    <th scope="col">Идентификатор первой таблицы</th>
+                    <th scope="col">Идентификатор второй таблицы</th>
                 </tr>
             </thead>
             <tbody>
-                {% for data in depersonalize_data %}
+                {% for data in link_table %}
                 <tr>
-                    <td>{{ data.table_name }}</td>
-                    <td>{{ data.table_serial_number }}</td>
+                    <td>{{ data.first_table_identifier }}</td>
+                    <td>{{ data.second_table_identifier }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

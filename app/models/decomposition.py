@@ -32,8 +32,8 @@ class SecondDepersonalizeTableForDecompositionMethods(db.Model):
 
 class LinkTableForDecompositionMethod(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    table_name = db.Column(db.String, nullable=False)
-    table_serial_number = db.Column(db.String, nullable=False)
+    first_table_identifier = db.Column(db.String, nullable=False)
+    second_table_identifier = db.Column(db.String, nullable=False)
 
 class UnDepersonalizationDataForDecompositionMethod(db.Model):
     id = db.Column(db.Integer, primary_key=True)
