@@ -1,7 +1,12 @@
 from time import perf_counter
 from flask import render_template, request, redirect, url_for
 from app import app, db
-from app.repositories import generate_random_persons
+from app.repositories import (
+    generate_random_persons,
+    run_depersonalization_identifier,
+    run_un_depersonalization_identifier,
+    write_time_into_experimental_data
+)
 from app.models.experiment import TestData, ExperimentalData
 from app.models.identifier import (
     DepersonalizeDataForIdentifierMethod,
@@ -85,14 +90,30 @@ def summary():
 # -- actions ---
 @app.route("/generate-persons", methods=["POST"])
 def generate_persons():
-    # ...
+    person_count = request.form['personCount']
+
+    generate_random_persons(db, person_count)
+
     return redirect(url_for("testing_methods"))
 
 
-@app.route("/run-method-1", methods=["GET"])
+@app.route("/run-method-1", methods=["POST"])
 def run_method_1():
-    # ...
-    db.session.commit()
+
+    t_start = perf_counter()
+    run_depersonalization_identifier(db)
+    t_de = perf_counter() - t_start
+
+    t_start = perf_counter()
+    run_un_depersonalization_identifier(db)
+    t_unde = perf_counter() - t_start
+
+    write_time_into_experimental_data(db,
+                                      t_de,
+                                      t_unde,
+                                      'identifier')
+
+    return redirect(url_for("method_1"))
 
 
 @app.route("/run-method-2", methods=["GET"])
