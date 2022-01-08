@@ -27,13 +27,14 @@
 
 {% block body %}
 <h1>Метод декомпозиции</h1>
-<p class="bg-light rounded py-2 px-2">На данной странице выполнятеся процедура обезличивания и деобезлчивания методом декомпозиции. Во время
+<p class="bg-light rounded py-2 px-2">На данной странице выполнятеся процедура обезличивания и деобезлчивания методом
+    декомпозиции. Во время
     выполнения процедуры собираются некоторые данные, которые будут использоваться для оценивания этого метода в
     дальнейшем.
 </p>
 </br>
 
-<form>
+<form method="post" action="/run-method-3">
     <div class="row">
         <div class="col-4 mx-auto my-auto">
             <button class="btn btn-outline-primary py-4" type="submit">Запуск процедуры обезличивания и
@@ -101,18 +102,18 @@
                 {% for data in second_table %}
                 <tr>
                     <td>{{ data.id }}</td>
-                    <td>{{ test_data.fio }}</td>
-                    <td>{{ test_data.birth_date }}</td>
-                    <td>{{ test_data.birth_place }}</td>
-                    <td>{{ test_data.post_address }}</td>
-                    <td>{{ test_data.email }}</td>
-                    <td>{{ test_data.passport_serial }}</td>
-                    <td>{{ test_data.passport_number }}</td>
-                    <td>{{ test_data.inn }}</td>
-                    <td>{{ test_data.snils }}</td>
-                    <td>{{ test_data.telephone }}</td>
-                    <td>{{ test_data.payment_account }}</td>
-                    <td>{{ test_data.group_number }}</td>
+                    <td>{{ data.fio }}</td>
+                    <td>{{ data.birth_date }}</td>
+                    <td>{{ data.birth_place }}</td>
+                    <td>{{ data.post_address }}</td>
+                    <td>{{ data.email }}</td>
+                    <td>{{ data.passport_serial }}</td>
+                    <td>{{ data.passport_number }}</td>
+                    <td>{{ data.inn }}</td>
+                    <td>{{ data.snils }}</td>
+                    <td>{{ data.telephone }}</td>
+                    <td>{{ data.payment_account }}</td>
+                    <td>{{ data.study_group_number }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -178,8 +179,8 @@
                     <td>{{ data.military_data }}</td>
                     <td>{{ data.family_status }}</td>
                     <td>{{ data.payment_account }}</td>
-                    <td>{{ data.group_number }}</td>
-                    <td>{{ data.institute_name }}</td>
+                    <td>{{ data.study_group_number }}</td>
+                    <td>{{ data.study_institute }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

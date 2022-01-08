@@ -33,7 +33,7 @@
 </p>
 </br>
 
-<form>
+<form method="post" action="/run-method-2">
     <div class="row">
         <div class="col-4 mx-auto my-auto">
             <button class="btn btn-outline-primary py-4" type="submit">Запуск процедуры обезличивания и
@@ -53,7 +53,7 @@
 <div class="row">
     <div class="table-responsive">
         <table class="table table-bordered caption-top">
-            <caption>Обезличенные данные</caption>
+            <caption>Обезличенная таблица</caption>
             <thead class="table-dark">
                 <tr>
                     <th scope="col">ФИО</th>
@@ -89,8 +89,8 @@
                     <td>{{ data.military_data }}</td>
                     <td>{{ data.family_status }}</td>
                     <td>{{ data.payment_account }}</td>
-                    <td>{{ data.group_number }}</td>
-                    <td>{{ data.institute_name }}</td>
+                    <td>{{ data.study_group_number }}</td>
+                    <td>{{ data.study_institute }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -100,7 +100,7 @@
 <div class="row">
     <div class="table-responsive">
         <table class="table table-bordered caption-top">
-            <caption>Деобезличенные данные</caption>
+            <caption>Деобезличенная таблица</caption>
             <thead class="table-dark">
                 <tr>
                     <th scope="col">ФИО</th>
@@ -136,8 +136,8 @@
                     <td>{{ data.military_data }}</td>
                     <td>{{ data.family_status }}</td>
                     <td>{{ data.payment_account }}</td>
-                    <td>{{ data.group_number }}</td>
-                    <td>{{ data.institute_name }}</td>
+                    <td>{{ data.study_group_number }}</td>
+                    <td>{{ data.study_institute }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

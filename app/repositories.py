@@ -134,7 +134,8 @@ def run_depersonalization_identifier(db: SQLAlchemy) -> None:
         )
 
         curr_person = ConformityTableForIdentifierMethod().query.filter_by(payment_account=person.payment_account,
-                                                                           fio=person.fio)[0]
+                                                                           fio=person.fio,
+                                                                           passport_number=person.passport_number)[0]
         db.session.add(
             DepersonalizeDataForIdentifierMethod(
                 military_data=person.military_data,
@@ -174,6 +175,157 @@ def run_un_depersonalization_identifier(db: SQLAlchemy) -> None:
                 study_institute=dep_person.study_institute,
             )
         )
+    try:
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        db.session.rollback()
+
+
+# Метод перемешивания
+def run_depersonalization_shuffle(db: SQLAlchemy) -> None:
+    db.session.query(TableForShuffleMethod).delete()
+    db.session.query(UnDepersonalizationDataForShuffleMethod).delete()
+
+    for i in range(len(db.session.query(TestData).all())):
+        desc_person = db.session.query(
+            TestData).order_by(TestData.fio.desc())[i]
+        asc_person = db.session.query(TestData).order_by(TestData.fio.asc())[i]
+        db.session.add(
+            TableForShuffleMethod(
+                fio=asc_person.fio,
+                birth_date=desc_person.birth_date,
+                birth_place=asc_person.birth_place,
+                post_address=desc_person.post_address,
+                email=asc_person.email,
+                passport_serial=desc_person.passport_serial,
+                passport_number=asc_person.passport_number,
+                inn=desc_person.inn,
+                snils=asc_person.snils,
+                telephone=desc_person.telephone,
+                military_data=asc_person.military_data,
+                family_status=desc_person.family_status,
+                payment_account=asc_person.payment_account,
+                study_group_number=desc_person.study_group_number,
+                study_institute=asc_person.study_institute,
+            )
+        )
+
+    try:
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        db.session.rollback()
+
+
+def run_undepersonalization_shuffle(db: SQLAlchemy) -> None:
+    for i in range(len(db.session.query(TestData).all())):
+        shuffle_person = db.session.query(TableForShuffleMethod).all()[i]
+        desc_shuffle_person = db.session.query(TableForShuffleMethod).order_by(
+            TableForShuffleMethod.fio.desc())[i]
+
+        db.session.add(
+            UnDepersonalizationDataForShuffleMethod(
+                fio=desc_shuffle_person.fio,
+                birth_date=shuffle_person.birth_date,
+                birth_place=desc_shuffle_person.birth_place,
+                post_address=shuffle_person.post_address,
+                email=desc_shuffle_person.email,
+                passport_serial=shuffle_person.passport_serial,
+                passport_number=desc_shuffle_person.passport_number,
+                inn=shuffle_person.inn,
+                snils=desc_shuffle_person.snils,
+                telephone=shuffle_person.telephone,
+                military_data=desc_shuffle_person.military_data,
+                family_status=shuffle_person.family_status,
+                payment_account=desc_shuffle_person.payment_account,
+                study_group_number=shuffle_person.study_group_number,
+                study_institute=desc_shuffle_person.study_institute,
+            )
+        )
+
+    try:
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        db.session.rollback()
+
+
+# Метод Декомпозиции
+def run_depersonalization_decomposition(db: SQLAlchemy) -> None:
+    db.session.query(FirstDepersonalizeTableForDecompositionMethod).delete()
+    db.session.query(SecondDepersonalizeTableForDecompositionMethods).delete()
+    db.session.query(LinkTableForDecompositionMethod).delete()
+
+    for person in db.session.query(TestData).all():
+        db.session.add(
+            FirstDepersonalizeTableForDecompositionMethod(
+                military_data=person.military_data,
+                family_status=person.family_status,
+                study_institute=person.study_institute
+            )
+        )
+        db.session.add(
+            SecondDepersonalizeTableForDecompositionMethods(
+                fio=person.fio,
+                birth_date=person.birth_date,
+                birth_place=person.birth_place,
+                post_address=person.post_address,
+                email=person.email,
+                passport_serial=person.passport_serial,
+                passport_number=person.passport_number,
+                inn=person.inn,
+                snils=person.snils,
+                telephone=person.telephone,
+                payment_account=person.payment_account,
+                study_group_number=person.study_group_number
+            )
+        )
+        cur_person_2_table = SecondDepersonalizeTableForDecompositionMethods().query.filter_by(payment_account=person.payment_account,
+                                                                                               fio=person.fio,
+                                                                                               passport_number=person.passport_number)[0]
+        db.session.add(
+            LinkTableForDecompositionMethod(
+                first_table_identifier=cur_person_2_table.id,
+                second_table_identifier=cur_person_2_table.id
+            )
+        )
+
+    try:
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        db.session.rollback()
+
+
+def run_undepersonalization_decomposition(db: SQLAlchemy) -> None:
+    for link in db.session.query(LinkTableForDecompositionMethod).all():
+        table_1 = db.session.query(FirstDepersonalizeTableForDecompositionMethod).filter_by(
+            id=link.first_table_identifier
+        )[0]
+        table_2 = db.session.query(SecondDepersonalizeTableForDecompositionMethods).filter_by(
+            id=link.second_table_identifier
+        )[0]
+        db.session.add(
+            UnDepersonalizationDataForDecompositionMethod(
+                fio=table_2.fio,
+                birth_date=table_2.birth_date,
+                birth_place=table_2.birth_place,
+                post_address=table_2.post_address,
+                email=table_2.email,
+                passport_serial=table_2.passport_serial,
+                passport_number=table_2.passport_number,
+                inn=table_2.inn,
+                snils=table_2.snils,
+                telephone=table_2.telephone,
+                military_data=table_1.military_data,
+                family_status=table_1.family_status,
+                payment_account=table_2.payment_account,
+                study_group_number=table_2.study_group_number,
+                study_institute=table_1.study_institute,
+            )
+        )
+
     try:
         db.session.commit()
     except Exception as e:

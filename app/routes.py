@@ -5,7 +5,11 @@ from app.repositories import (
     generate_random_persons,
     run_depersonalization_identifier,
     run_un_depersonalization_identifier,
-    write_time_into_experimental_data
+    write_time_into_experimental_data,
+    run_depersonalization_shuffle,
+    run_undepersonalization_shuffle,
+    run_depersonalization_decomposition,
+    run_undepersonalization_decomposition
 )
 from app.models.experiment import TestData, ExperimentalData
 from app.models.identifier import (
@@ -99,7 +103,6 @@ def generate_persons():
 
 @app.route("/run-method-1", methods=["POST"])
 def run_method_1():
-
     t_start = perf_counter()
     run_depersonalization_identifier(db)
     t_de = perf_counter() - t_start
@@ -116,13 +119,37 @@ def run_method_1():
     return redirect(url_for("method_1"))
 
 
-@app.route("/run-method-2", methods=["GET"])
+@app.route("/run-method-2", methods=["POST"])
 def run_method_2():
-    # ...
-    db.session.commit()
+    t_start = perf_counter()
+    run_depersonalization_shuffle(db)
+    t_de = perf_counter() - t_start
+
+    t_start = perf_counter()
+    run_undepersonalization_shuffle(db)
+    t_unde = perf_counter() - t_start
+
+    write_time_into_experimental_data(db,
+                                      t_de,
+                                      t_unde,
+                                      'shuffle')
+
+    return redirect(url_for("method_2"))
 
 
-@app.route("/run-method-3", methods=["GET"])
+@app.route("/run-method-3", methods=["POST"])
 def run_method_3():
-    # ...
-    db.session.commit()
+    t_start = perf_counter()
+    run_depersonalization_decomposition(db)
+    t_de = perf_counter() - t_start
+
+    t_start = perf_counter()
+    run_undepersonalization_decomposition(db)
+    t_unde = perf_counter() - t_start
+
+    write_time_into_experimental_data(db,
+                                      t_de,
+                                      t_unde,
+                                      'decomposition')
+
+    return redirect(url_for("method_3"))
