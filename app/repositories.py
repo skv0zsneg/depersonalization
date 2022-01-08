@@ -1,9 +1,12 @@
+from typing import Tuple
 from flask_sqlalchemy import SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
 from mimesis import Person, Address
 from mimesis.locales import Locale
 from mimesis.builtins import RussiaSpecProvider
 from random import choice
+
+import sqlalchemy
 from app import utils
 from app.models.experiment import TestData, ExperimentalData
 from app.models.identifier import (
@@ -331,3 +334,42 @@ def run_undepersonalization_decomposition(db: SQLAlchemy) -> None:
     except Exception as e:
         print(e)
         db.session.rollback()
+
+
+def calculate(db: SQLAlchemy,
+              method_name: str) -> Tuple[str, str, str]:
+    """Рассчет критериев эффективности.
+
+    :return: Скорость обезличивания, скорость деобезличивания, критерий совместимости.
+    """
+    t_de = float(db.session.query(ExperimentalData).filter_by(
+        method_name=method_name).first().time_to_depersonalization
+    )
+    t_unde = float(db.session.query(ExperimentalData).filter_by(
+        method_name=method_name).first().time_to_undepersonalization
+    )
+    test_data_size = 0
+    for person in db.session.query(TestData).all():
+        test_data_size += len(person.fio.encode('utf-8'))
+        test_data_size += len(person.birth_date.encode('utf-8'))
+        test_data_size += len(person.birth_place.encode('utf-8'))
+        test_data_size += len(person.post_address.encode('utf-8'))
+        test_data_size += len(person.email.encode('utf-8'))
+        test_data_size += len(person.passport_serial.encode('utf-8'))
+        test_data_size += len(person.passport_number.encode('utf-8'))
+        test_data_size += len(person.inn.encode('utf-8'))
+        test_data_size += len(person.snils.encode('utf-8'))
+        test_data_size += len(person.telephone.encode('utf-8'))
+        test_data_size += len(person.military_data.encode('utf-8')) if person.military_data is not None else 0
+        test_data_size += len(person.family_status.encode('utf-8'))
+        test_data_size += len(person.payment_account.encode('utf-8'))
+        test_data_size += len(person.study_group_number.encode('utf-8'))
+        test_data_size += len(person.study_institute.encode('utf-8'))
+        
+    test_data_size = test_data_size
+
+    de_speed = test_data_size / t_de if t_de != 0 else 0
+    unde_speed = test_data_size / t_unde if t_unde != 0 else 0
+    compibility = de_speed - unde_speed
+
+    return str(round(de_speed, 1)), str(round(unde_speed, 1)), str(round(compibility, 1))

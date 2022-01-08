@@ -33,81 +33,81 @@
     <!-- Идетификаторов -->
     <div class="row">
         <div class="col my-2 mx-2">
-            <div class="card bg-light">
+            <div class="card bg-light my-3">
                 <div class="card-body">
                     <h3 class="card-title pb-1">Метод введения идентификаторов</h3>
                     <h6 class="card-subtitle text-muted pb-3">Собранные данные и результаты оценивания</h6>
                     
                     <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на обезличивание:</p>
-                    <h1 class="display-6 pb-2">{{ identifier_data.time_to_depersonalization[:18] }}</h1>
+                    <h1 class="display-6 pb-2">{{ identifier_data.time_to_depersonalization[:9] }}</h1>
 
                     <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на деобезличивание:</p>
-                    <h1 class="display-6 pb-3">{{ identifier_data.time_to_undepersonalization[:18] }}</h1>
+                    <h1 class="display-6 pb-3">{{ identifier_data.time_to_undepersonalization[:9] }}</h1>
 
                     <h5 class="card-title pb-1">Исходя из полученных выше данных, получим</h5>
 
                     <p class="card-text pb-2 mb-0">Критерий скорости обезличивания:</p>
-                    <h1 class="display-5 text-success pb-2">45.123 Гб/с</h1>
+                    <h1 class="display-5 text-success pb-2">{{ calc_identifier[0] }} Б/с</h1>
 
                     <p class="card-text pb-2 mb-0">Критерий скорости деобезличивания:</p>
-                    <h1 class="display-5 text-success pb-2">45.123 Гб/с</h1>
+                    <h1 class="display-5 text-success pb-2">{{ calc_identifier[1] }} Б/с</h1>
 
                     <p class="card-text pb-2 mb-0">Критерий совместимости обезличивания к деобезличиванию:</p>
-                    <h1 class="display-5 text-success">5</h1>
+                    <h1 class="display-5 text-info">{{ calc_identifier[2] }}</h1>
                 </div>
             </div>
         </div>
         <!-- . -->
         <!-- перемешивания -->
         <div class="col my-2 mx-2">
-            <div class="card bg-light">
+            <div class="card bg-light my-3">
                 <div class="card-body">
                     <h3 class="card-title pb-1">Метод перемешивания</h3>
                     <h6 class="card-subtitle text-muted pb-3">Собранные данные и результаты оценивания</h6>
 
                     <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на обезличивание:</p>
-                    <h1 class="display-6 pb-2">{{ shuffle_data.time_to_depersonalization[:18] }}</h1>
+                    <h1 class="display-6 pb-2">{{ shuffle_data.time_to_depersonalization[:9] }}</h1>
 
                     <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на деобезличивание:</p>
-                    <h1 class="display-6 pb-3">{{ shuffle_data.time_to_undepersonalization[:18] }}</h1>
+                    <h1 class="display-6 pb-3">{{ shuffle_data.time_to_undepersonalization[:9] }}</h1>
 
                     <h5 class="card-title pb-1">Исходя из полученных выше данных, получим</h5>
 
                     <p class="card-text pb-2 mb-0">Критерий скорости обезличивания:</p>
-                    <h1 class="display-5 text-success pb-2">45.123 Гб/с</h1>
+                    <h1 class="display-5 text-success pb-2">{{ calc_shuffle[0] }} Б/с</h1>
 
                     <p class="card-text pb-2 mb-0">Критерий скорости деобезличивания:</p>
-                    <h1 class="display-5 text-success pb-2">45.123 Гб/с</h1>
+                    <h1 class="display-5 text-success pb-2">{{ calc_shuffle[1] }} Б/с</h1>
 
                     <p class="card-text pb-2 mb-0">Критерий совместимости обезличивания к деобезличиванию:</p>
-                    <h1 class="display-5 text-success">5</h1>
+                    <h1 class="display-5 text-info">{{ calc_shuffle[2] }}</h1>
                 </div>
             </div>
         </div>
         <!-- . -->
         <!-- декомпозиции -->
         <div class="col my-2 mx-2">
-            <div class="card bg-light">
+            <div class="card bg-light my-3">
                 <div class="card-body">
                     <h3 class="card-title pb-1">Метод декомпозиции</h3>
                     <h6 class="card-subtitle text-muted pb-3">Собранные данные и результаты оценивания</h6>
 
                     <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на обезличивание:</p>
-                    <h1 class="display-6 pb-2">{{ decomposition_data.time_to_depersonalization[:18] }}</h1>
+                    <h1 class="display-6 pb-2">{{ decomposition_data.time_to_depersonalization[:9] }}</h1>
 
                     <p class="card-text pb-1 mb-0">Затраченное время (в секундах) на деобезличивание:</p>
-                    <h1 class="display-6 pb-3">{{ decomposition_data.time_to_undepersonalization[:18] }}</h1>
+                    <h1 class="display-6 pb-3">{{ decomposition_data.time_to_undepersonalization[:9] }}</h1>
 
                     <h5 class="card-title pb-1">Исходя из полученных выше данных, получим</h5>
 
                     <p class="card-text pb-2 mb-0">Критерий скорости обезличивания:</p>
-                    <h1 class="display-5 text-success pb-2">45.123 Гб/с</h1>
+                    <h1 class="display-5 text-success pb-2">{{ calc_decomposition[0] }} Б/с</h1>
 
                     <p class="card-text pb-2 mb-0">Критерий скорости деобезличивания:</p>
-                    <h1 class="display-5 text-success pb-2">45.123 Гб/с</h1>
+                    <h1 class="display-5 text-success pb-2">{{ calc_decomposition[1] }} Б/с</h1>
 
                     <p class="card-text pb-2 mb-0">Критерий совместимости обезличивания к деобезличиванию:</p>
-                    <h1 class="display-5 text-success">5</h1>
+                    <h1 class="display-5 text-info">{{ calc_decomposition[2] }}</h1>
                 </div>
             </div>
         </div>

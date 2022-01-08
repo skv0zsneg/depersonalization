@@ -9,7 +9,8 @@ from app.repositories import (
     run_depersonalization_shuffle,
     run_undepersonalization_shuffle,
     run_depersonalization_decomposition,
-    run_undepersonalization_decomposition
+    run_undepersonalization_decomposition,
+    calculate
 )
 from app.models.experiment import TestData, ExperimentalData
 from app.models.identifier import (
@@ -88,6 +89,9 @@ def summary():
         decomposition_data=ExperimentalData()
         .query.filter_by(method_name="decomposition")
         .first(),
+        calc_identifier=calculate(db, 'identifier'),
+        calc_shuffle=calculate(db, 'shuffle'),
+        calc_decomposition=calculate(db, 'decomposition')
     )
 
 
