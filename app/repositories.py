@@ -340,7 +340,8 @@ def calculate(db: SQLAlchemy,
               method_name: str) -> Tuple[str, str, str]:
     """Рассчет критериев эффективности.
 
-    :return: Скорость обезличивания, скорость деобезличивания, критерий совместимости.
+    :return: Скорость обезличивания, скорость деобезличивания, 
+    критерий совместимости, размер (в байтах) тестовых данных.
     """
     t_de = float(db.session.query(ExperimentalData).filter_by(
         method_name=method_name).first().time_to_depersonalization
@@ -366,10 +367,8 @@ def calculate(db: SQLAlchemy,
         test_data_size += len(person.study_group_number.encode('utf-8'))
         test_data_size += len(person.study_institute.encode('utf-8'))
         
-    test_data_size = test_data_size
-
     de_speed = test_data_size / t_de if t_de != 0 else 0
     unde_speed = test_data_size / t_unde if t_unde != 0 else 0
     compibility = de_speed - unde_speed
 
-    return str(round(de_speed, 1)), str(round(unde_speed, 1)), str(round(compibility, 1))
+    return str(round(de_speed, 1)), str(round(unde_speed, 1)), str(round(compibility, 1)), str(test_data_size)
